@@ -11,146 +11,87 @@ import "./index.css";
 
 const STORAGE_KEY = "codespace-project-v1";
 
+
 const languageExamples = {
-  javascript: `const name = "Developer";
-console.log("Hello, " + name);
+  javascript: `// Hello World
+console.log("Hello, World!");`,
 
-const numbers = [10, 20, 30, 40, 50];
-console.log("Numbers:", numbers);
-console.log("Total:", numbers.reduce((sum, n) => sum + n, 0));`,
+  python: `# Hello World
+print("Hello, World!")`,
 
-  typescript: `function greet(name: string): string {
-  return "Hello, " + name + "!";
-}
-
-console.log(greet("Developer"));`,
-
-  python: `name = input("Enter your name: ")
-age = int(input("Enter your age: "))
-
-print("Hello,", name)
-print("Age:", age)`,
-
-  java: `import java.util.Scanner;
-
-public class Main {
+  java: `public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter your name: ");
-        String name = sc.nextLine();
-
-        System.out.print("Enter your age: ");
-        int age = Integer.parseInt(sc.nextLine());
-
-        System.out.println("Hello, " + name);
-        System.out.println("Age: " + age);
-
-        sc.close();
+        System.out.println("Hello, World!");   
     }
 }`,
 
   cpp: `#include <iostream>
-#include <string>
+#include <algorithm>
 using namespace std;
 
 int main() {
-    string name;
-    int age;
-
-    cout << "Enter your name: ";
-    getline(cin, name);
-
-    cout << "Enter your age: ";
-    cin >> age;
-
-    cout << "Hello, " << name << endl;
-    cout << "Age: " << age << endl;
-
+    cout << "Hello, World!" << endl;
     return 0;
 }`,
 
   c: `#include <stdio.h>
-#include <string.h>
 
 int main() {
-    char name[100];
-    int age;
-
-    printf("Enter your name: ");
-    if (fgets(name, sizeof(name), stdin) == NULL) {
-        return 1;
-    }
-    name[strcspn(name, "\\n")] = '\\0';
-
-    printf("Enter your age: ");
-    if (scanf("%d", &age) != 1) {
-        printf("Invalid age input.\\n");
-        return 1;
-    }
-
-    printf("Hello, %s\\n", name);
-    printf("Age: %d\\n", age);
-
+    printf("Hello, World!\\n");
     return 0;
 }`,
+
+  typescript: `const a: number = 10;
+const b: number = 20;
+
+console.log("Hello, World!");`,
 
   html: `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Web Page</title>
+  <title>CodeSpace Demo</title>
 </head>
 <body>
   <h1>Hello, World!</h1>
   <p>Welcome to CodeSpace.</p>
-  <button onclick="alert('Hello!')">Click Me</button>
+  <button onclick="alert('Button clicked!')">
+    Click Me
+  </button>
 </body>
 </html>`,
 
   css: `body {
   font-family: Arial, sans-serif;
   background: #f1f5f9;
-  color: #1e293b;
   padding: 24px;
 }
 
 h1 {
   color: #4f46e5;
-}
-
-button {
-  padding: 10px 16px;
-  background: #4f46e5;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
 }`,
 
   json: `{
-  "message": "Hello, JSON!",
-  "success": true,
-  "numbers": [10, 20, 30]
+  "message": "Hello, World!",
+  "language": "CodeSpace",
+  "success": true
 }`,
 
-  react: `function App() {
-  const [count, setCount] = React.useState(0);
+  react: `import { useState } from "react";
+
+export default function App() {
+  const [count, setCount] = useState(0);
 
   return (
-    <div style={{ padding: "24px", fontFamily: "Arial" }}>
+    <div style={{ padding: 24, fontFamily: "Arial" }}>
       <h1>Hello, React!</h1>
-      <p>Welcome to CodeSpace.</p>
       <p>Count: {count}</p>
       <button onClick={() => setCount(count + 1)}>
         Click Me
       </button>
     </div>
   );
-}
-
-export default App;`,
+}`
 };
 
 const initialFiles = [

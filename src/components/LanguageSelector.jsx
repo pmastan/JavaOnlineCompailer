@@ -1,16 +1,16 @@
 import { Code2 } from "lucide-react";
 
 export const languages = [
-  { label: "JavaScript", value: "javascript" },
-  // { label: "TypeScript", value: "typescript" },
-  { label: "Python", value: "python" },
-  { label: "Java", value: "java" },
-  { label: "C++", value: "cpp" },
   { label: "C", value: "c" },
-  { label: "HTML", value: "html" },
+  { label: "C++", value: "cpp" },
   { label: "CSS", value: "css" },
+  { label: "HTML", value: "html" },
+  { label: "Java", value: "java" },
+  { label: "JavaScript", value: "javascript" },
   // { label: "JSON", value: "json" },
+  { label: "Python", value: "python" },
   { label: "React", value: "react" },
+  // { label: "TypeScript", value: "typescript" },
 ];
 
 export default function LanguageSelector({ language, onChange }) {
