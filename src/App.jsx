@@ -290,6 +290,7 @@ export default function App() {
   const [output, setOutput] = useState([]);
   const [running, setRunning] = useState(false);
   const [preview, setPreview] = useState(null);
+  const [showHome, setShowHome] = useState(true);
 
   const currentFile =
     files.find((file) => file.name === activeFile) || files[0];
@@ -526,8 +527,234 @@ export default function App() {
     );
   }
 
+  // Public SEO-friendly homepage. The existing editor remains intact below.
+  if (showHome) {
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          background: "linear-gradient(135deg, #f8fafc 0%, #eef2ff 55%, #ecfeff 100%)",
+          color: "#0f172a",
+          fontFamily: "Inter, Arial, sans-serif",
+        }}
+      >
+        <header
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "16px",
+            padding: "20px clamp(20px, 6vw, 80px)",
+            background: "rgba(255,255,255,0.9)",
+            borderBottom: "1px solid #e2e8f0",
+          }}
+        >
+          <a
+            href="/"
+            aria-label="CodeSpace homepage"
+            style={{ color: "#4338ca", fontSize: "22px", fontWeight: 800, textDecoration: "none" }}
+          >
+            CodeSpace
+          </a>
+          <button
+            type="button"
+            onClick={() => setShowHome(false)}
+            style={{
+              border: 0,
+              borderRadius: "10px",
+              background: "#4f46e5",
+              color: "#fff",
+              padding: "11px 18px",
+              fontWeight: 700,
+              cursor: "pointer",
+            }}
+          >
+            Open Code Editor
+          </button>
+        </header>
+
+        <main style={{ maxWidth: "1080px", margin: "0 auto", padding: "64px 24px 48px" }}>
+          <section style={{ textAlign: "center", padding: "28px 0 48px" }}>
+            <p
+              style={{
+                display: "inline-block",
+                margin: "0 0 18px",
+                padding: "8px 13px",
+                borderRadius: "999px",
+                background: "#e0e7ff",
+                color: "#3730a3",
+                fontSize: "14px",
+                fontWeight: 700,
+              }}
+            >
+              A simple browser-based coding workspace
+            </p>
+            <h1
+              style={{
+                maxWidth: "850px",
+                margin: "0 auto 20px",
+                fontSize: "clamp(36px, 6vw, 62px)",
+                lineHeight: 1.08,
+                letterSpacing: "-0.04em",
+              }}
+            >
+              Free Online React Compiler and Code Editor
+            </h1>
+            <p
+              style={{
+                maxWidth: "760px",
+                margin: "0 auto",
+                color: "#475569",
+                fontSize: "18px",
+                lineHeight: 1.8,
+              }}
+            >
+              Write and practice React, JSX, JavaScript, HTML, and CSS in an
+              online coding workspace. Edit files, run supported programs, and
+              preview web code directly in your browser.
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowHome(false)}
+              style={{
+                marginTop: "28px",
+                border: 0,
+                borderRadius: "12px",
+                background: "#4f46e5",
+                color: "#fff",
+                padding: "15px 24px",
+                fontSize: "16px",
+                fontWeight: 800,
+                cursor: "pointer",
+                boxShadow: "0 10px 24px rgba(79,70,229,0.22)",
+              }}
+            >
+              Start Coding →
+            </button>
+            <p style={{ marginTop: "12px", color: "#64748b", fontSize: "13px" }}>
+              Open the editor to try the available examples and tools.
+            </p>
+          </section>
+
+          <section aria-labelledby="features-heading" style={{ padding: "24px 0 36px" }}>
+            <h2
+              id="features-heading"
+              style={{ textAlign: "center", fontSize: "clamp(25px, 4vw, 36px)", marginBottom: "24px" }}
+            >
+              Features of the Online Code Editor
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "18px",
+              }}
+            >
+              {[
+                {
+                  title: "React and JSX Practice",
+                  description: "Practice React component code and JSX examples in the coding workspace.",
+                },
+                {
+                  title: "HTML and CSS Preview",
+                  description: "Edit HTML and CSS examples and view the available live preview.",
+                },
+                {
+                  title: "Multiple Code Files",
+                  description: "Create, select, edit, and manage files in your browser-based project.",
+                },
+                {
+                  title: "Programming Examples",
+                  description: "Explore examples for JavaScript, Python, Java, C, and C++ where execution is configured.",
+                },
+              ].map((feature) => (
+                <article
+                  key={feature.title}
+                  style={{
+                    padding: "24px",
+                    border: "1px solid #e2e8f0",
+                    borderRadius: "18px",
+                    background: "rgba(255,255,255,0.9)",
+                    boxShadow: "0 8px 24px rgba(15,23,42,0.04)",
+                  }}
+                >
+                  <h3 style={{ margin: "0 0 10px", fontSize: "19px" }}>{feature.title}</h3>
+                  <p style={{ margin: 0, color: "#475569", lineHeight: 1.7 }}>{feature.description}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section
+            aria-labelledby="how-to-heading"
+            style={{
+              marginTop: "20px",
+              padding: "28px",
+              borderRadius: "20px",
+              background: "#fff",
+              border: "1px solid #e2e8f0",
+            }}
+          >
+            <h2 id="how-to-heading" style={{ marginTop: 0, fontSize: "26px" }}>
+              How to Use the Online Code Editor
+            </h2>
+            <ol style={{ color: "#475569", lineHeight: 1.9, paddingLeft: "22px" }}>
+              <li>Choose an example file or create a new file in the editor.</li>
+              <li>Write or update your code in the editor panel.</li>
+              <li>Use Run Code to execute supported languages or update web previews.</li>
+              <li>Save your project in your browser when you want to keep your changes.</li>
+            </ol>
+            <button
+              type="button"
+              onClick={() => setShowHome(false)}
+              style={{
+                border: 0,
+                borderRadius: "10px",
+                background: "#0f172a",
+                color: "#fff",
+                padding: "12px 18px",
+                fontWeight: 700,
+                cursor: "pointer",
+              }}
+            >
+              Try the Code Editor
+            </button>
+          </section>
+        </main>
+
+        <footer
+          style={{
+            padding: "24px",
+            textAlign: "center",
+            borderTop: "1px solid #e2e8f0",
+            color: "#64748b",
+            fontSize: "14px",
+          }}
+        >
+          © {new Date().getFullYear()} CodeSpace. Online coding workspace for learning and practice.
+        </footer>
+      </div>
+    );
+  }
+
   return (
     <div className="app-shell">
+      <div style={{ padding: "8px 16px", display: "flex", justifyContent: "flex-start" }}>
+        <button
+          type="button"
+          onClick={() => setShowHome(true)}
+          style={{
+            border: "1px solid #64748b",
+            borderRadius: "8px",
+            background: "transparent",
+            color: "inherit",
+            padding: "7px 12px",
+            cursor: "pointer",
+          }}
+        >
+          ← Home
+        </button>
+      </div>
       <Header
         theme={theme}
         setTheme={setTheme}
